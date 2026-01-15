@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BusTogether - צ'אט נוסעים</title>
+  <link rel="stylesheet" href="/chat/chat.css">
+</head>
+<body>
+  <!-- Loading State -->
+  <div id="loading-screen" class="screen">
+    <div class="loading-spinner"></div>
+    <p>טוען...</p>
+  </div>
+
+  <!-- Inactive Chat State -->
+  <div id="inactive-screen" class="screen hidden">
+    <div class="container">
+      <div class="logo">🚌</div>
+      <h1>BusTogether</h1>
+      <div class="message-box">
+        <p class="main-message">אין כרגע צ'אט פעיל לנסיעה זו</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Username Selection State -->
+  <div id="username-screen" class="screen hidden">
+    <div class="container">
+      <div class="logo">🚌</div>
+      <h1>BusTogether</h1>
+      <div class="chat-name" id="chat-name-display"></div>
+      
+      <div class="username-form">
+        <label for="username-input">בחר שם משתמש:</label>
+        <input 
+          type="text" 
+          id="username-input" 
+          placeholder="הכנס שם..." 
+          maxlength="20"
+          autocomplete="off"
+        >
+        <button id="join-btn" class="primary-btn">כניסה לצ'אט</button>
+        <p class="hint">השם יהיה זמני ואנונימי</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Chat Interface -->
+  <div id="chat-screen" class="screen hidden">
+    <div class="chat-container">
+      <!-- Header -->
+      <div class="chat-header">
+        <div class="chat-info">
+          <h2 id="chat-title"></h2>
+          <span id="participant-count">0 משתתפים</span>
+        </div>
+      </div>
+
+      <!-- Messages -->
+      <div id="messages-container" class="messages-container">
+        <!-- Messages will be inserted here -->
+      </div>
+
+      <!-- Input -->
+      <div class="chat-input-container">
+        <input 
+          type="text" 
+          id="message-input" 
+          placeholder="הקלד הודעה..."
+          maxlength="500"
+          autocomplete="off"
+        >
+        <button id="send-btn" class="send-btn">📤</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Toast -->
+  <div id="error-toast" class="toast hidden"></div>
+
+  <!-- Socket.IO -->
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/chat/chat.js"></script>
+</body>
+</html>
