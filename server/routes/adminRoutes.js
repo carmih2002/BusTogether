@@ -37,7 +37,8 @@ router.post('/buses', async (req, res) => {
         const bus = busService.createBus({ id, name });
 
         // Generate QR code
-        const qrData = await generateBusQR(id, 'https://wise-cooks-think.loca.lt');
+        const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+        const qrData = await generateBusQR(id, baseUrl);
         bus.qrDataUrl = qrData.qrDataUrl;
 
         res.json(bus);
@@ -99,7 +100,8 @@ router.get('/buses/:id/qr', async (req, res) => {
             return res.status(404).json({ error: 'Bus not found' });
         }
 
-        const buffer = await generateBusQRBuffer(id, 'https://wise-cooks-think.loca.lt');
+        const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+        const buffer = await generateBusQRBuffer(id, baseUrl);
 
         res.setHeader('Content-Type', 'image/png');
         res.setHeader('Content-Disposition', `attachment; filename="bus-${id}-qr.png"`);
