@@ -129,14 +129,14 @@ function BusManager({ onSelectBus }) {
                                     <div className="link-copy-container">
                                         <input
                                             type="text"
-                                            value={`https://wise-cooks-think.loca.lt/bus/${bus.id}`}
+                                            value={`http://localhost:3000/bus/${bus.id}`}
                                             readOnly
                                             className="link-input"
                                             onClick={(e) => e.target.select()}
                                         />
                                         <button
                                             onClick={() => {
-                                                navigator.clipboard.writeText(`https://wise-cooks-think.loca.lt/bus/${bus.id}`);
+                                                navigator.clipboard.writeText(`http://localhost:3000/bus/${bus.id}`);
                                                 alert('הקישור הועתק!');
                                             }}
                                             className="copy-btn"
