@@ -9,7 +9,8 @@
       "Bash(npm run dev:*)",
       "Bash(taskkill:*)",
       "Bash(railway:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(TZ='Israel' date:*)"
     ]
   }
 }

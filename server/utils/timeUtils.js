@@ -2,12 +2,23 @@
  * Time utility functions for schedule management
  */
 
+// Israel timezone
+const TIMEZONE = 'Asia/Jerusalem';
+
 /**
- * Format Date to HH:MM string
+ * Get current time in Israel timezone
+ */
+export function getIsraelTime() {
+    return new Date(new Date().toLocaleString('en-US', { timeZone: TIMEZONE }));
+}
+
+/**
+ * Format Date to HH:MM string (in Israel timezone)
  */
 export function formatTime(date) {
-    const hours = String(date.getHours()).padStart(2, '0');
-    const minutes = String(date.getMinutes()).padStart(2, '0');
+    const israelDate = new Date(date.toLocaleString('en-US', { timeZone: TIMEZONE }));
+    const hours = String(israelDate.getHours()).padStart(2, '0');
+    const minutes = String(israelDate.getMinutes()).padStart(2, '0');
     return `${hours}:${minutes}`;
 }
 
@@ -34,9 +45,9 @@ export function isTimeInWindow(currentTime, startTime, endTime) {
  * Check if schedule should be active now
  */
 export function isScheduleActive(schedule) {
-    const now = new Date();
+    const now = getIsraelTime();
     const currentDay = now.getDay(); // 0 = Sunday, 6 = Saturday
-    const currentTime = formatTime(now);
+    const currentTime = formatTime(new Date());
 
     // Check if today is in the schedule's days
     if (!schedule.daysOfWeek.includes(currentDay)) {
