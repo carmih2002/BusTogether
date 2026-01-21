@@ -1,6 +1,6 @@
 {
   "name": "bustogether",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Anonymous time-based chat system for public transportation",
   "main": "server/index.js",
   "type": "module",
