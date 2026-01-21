@@ -4,10 +4,14 @@
   "description": "Anonymous time-based chat system for public transportation",
   "main": "server/index.js",
   "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
     "dev": "node server/index.js",
     "start": "node server/index.js",
     "build": "cd admin-dashboard && npm install && npm run build",
+    "postinstall": "npm run build",
     "admin": "cd admin-dashboard && npm run dev",
     "version:patch": "npm version patch -m \"v%s\"",
     "version:minor": "npm version minor -m \"v%s\"",
