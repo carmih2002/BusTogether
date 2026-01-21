@@ -1,6 +1,6 @@
 {
   "name": "bustogether",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Anonymous time-based chat system for public transportation",
   "main": "server/index.js",
   "type": "module",
@@ -12,7 +12,12 @@
     "version:minor": "npm version minor -m \"v%s\"",
     "version:major": "npm version major -m \"v%s\""
   },
-  "keywords": ["chat", "bus", "anonymous", "real-time"],
+  "keywords": [
+    "chat",
+    "bus",
+    "anonymous",
+    "real-time"
+  ],
   "author": "",
   "license": "MIT",
   "dependencies": {
