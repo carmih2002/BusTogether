@@ -7,7 +7,10 @@
   "scripts": {
     "dev": "node server/index.js",
     "start": "node server/index.js",
-    "admin": "cd admin-dashboard && npm run dev"
+    "admin": "cd admin-dashboard && npm run dev",
+    "version:patch": "npm version patch -m \"v%s\"",
+    "version:minor": "npm version minor -m \"v%s\"",
+    "version:major": "npm version major -m \"v%s\""
   },
   "keywords": ["chat", "bus", "anonymous", "real-time"],
   "author": "",
