@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "node server/index.js",
     "start": "node server/index.js",
+    "build": "cd admin-dashboard && npm install && npm run build",
     "admin": "cd admin-dashboard && npm run dev",
     "version:patch": "npm version patch -m \"v%s\"",
     "version:minor": "npm version minor -m \"v%s\"",

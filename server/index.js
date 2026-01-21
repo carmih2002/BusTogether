@@ -46,6 +46,13 @@ app.use(session({
 // Serve static files
 app.use(express.static(path.join(__dirname, '../public')));
 
+// Serve admin dashboard (built React app)
+const adminPath = path.join(__dirname, '../admin-dashboard/dist');
+app.use('/admin', express.static(adminPath));
+app.get('/admin/*', (req, res) => {
+    res.sendFile(path.join(adminPath, 'index.html'));
+});
+
 // Make io available to routes
 app.set('io', io);
 

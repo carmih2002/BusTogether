@@ -5,6 +5,7 @@ import * as scheduleService from '../services/scheduleService.js';
 import * as sessionService from '../services/sessionService.js';
 import { manuallyCloseSession } from '../services/schedulerService.js';
 import { generateBusQR, generateBusQRBuffer } from '../utils/qrGenerator.js';
+import { config } from '../config/config.js';
 
 const router = express.Router();
 
@@ -37,7 +38,7 @@ router.post('/buses', async (req, res) => {
         const bus = busService.createBus({ id, name });
 
         // Generate QR code
-        const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+        const baseUrl = config.baseUrl;
         const qrData = await generateBusQR(id, baseUrl);
         bus.qrDataUrl = qrData.qrDataUrl;
 
@@ -100,7 +101,7 @@ router.get('/buses/:id/qr', async (req, res) => {
             return res.status(404).json({ error: 'Bus not found' });
         }
 
-        const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
+        const baseUrl = config.baseUrl;
         const buffer = await generateBusQRBuffer(id, baseUrl);
 
         res.setHeader('Content-Type', 'image/png');
