@@ -32,6 +32,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Trust proxy for Railway/Heroku (required for secure cookies behind reverse proxy)
+if (config.environment === 'production') {
+    app.set('trust proxy', 1);
+}
+
 // Session middleware
 app.use(session({
     secret: config.sessionSecret,
@@ -39,6 +44,8 @@ app.use(session({
     saveUninitialized: false,
     cookie: {
         secure: config.environment === 'production',
+        httpOnly: true,
+        sameSite: config.environment === 'production' ? 'strict' : 'lax',
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
 }));
